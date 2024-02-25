@@ -2,6 +2,7 @@ package com.jobma.qa.test;
 
 import static org.testng.Assert.assertEquals;
 
+import org.bouncycastle.jcajce.provider.symmetric.util.PBE.Util;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -12,12 +13,15 @@ import org.testng.annotations.Test;
 import com.jobma.qa.base.TestBase;
 import com.jobma.qa.pages.Dashboard;
 import com.jobma.qa.pages.LoginPage;
+import com.jobma.qa.util.Utils;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPageTest extends TestBase {
 	
 	
 	
-	@BeforeMethod()
+	@BeforeTest()
 	public void setup() throws InterruptedException
 	{
 		TestBase.initialize();
@@ -29,32 +33,36 @@ public class LoginPageTest extends TestBase {
 	@Test()
 	public void loginPageTest() throws InterruptedException
 	{
-		 lp.login();
+		db =  lp.login();
 		
-		 
-		 Thread.sleep(5000);
-		Dashboard db = new Dashboard();
+		 db = new Dashboard();
+		 Utils.wait(driver, db.dashboardtitle );
 		String s = db.dashboardTitle();
 		assertEquals(s, "Dashboard");
 		
 		
 	}
+	
 	
 	@Test()
 	public void loginPageTest1() throws InterruptedException
 	{
-		 lp.login();
+		db =  lp.login();
 		
-		 
-		 Thread.sleep(5000);
-		Dashboard db = new Dashboard();
+		 db = new Dashboard();
+		 Utils.wait(driver, db.dashboardtitle );
 		String s = db.dashboardTitle();
 		assertEquals(s, "Dashboard");
 		
 		
 	}
 	
-	@AfterMethod()
+	
+		
+		
+	
+	
+	@AfterTest()
 	public void close()
 	{
 		TestBase.exit();
