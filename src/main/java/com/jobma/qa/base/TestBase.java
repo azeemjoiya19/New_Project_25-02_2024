@@ -50,6 +50,7 @@ public  class TestBase {
 			
 		}
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
 		driver.get(prop.getProperty("url"));
 		Thread.sleep(3000);
 		

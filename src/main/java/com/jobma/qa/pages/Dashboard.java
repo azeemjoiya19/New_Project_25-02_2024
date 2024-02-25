@@ -9,6 +9,7 @@ import com.jobma.qa.base.TestBase;
 public class Dashboard extends TestBase {
 	
 	@FindBy(xpath="//span[contains(text(),'Dashboard')]")
+	public
 	WebElement dashboardtitle;
 	
 	public Dashboard()
