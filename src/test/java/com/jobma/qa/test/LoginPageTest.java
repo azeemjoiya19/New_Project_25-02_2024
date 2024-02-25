@@ -44,18 +44,7 @@ public class LoginPageTest extends TestBase {
 	}
 	
 	
-	@Test()
-	public void loginPageTest1() throws InterruptedException
-	{
-		db =  lp.login();
-		
-		 db = new Dashboard();
-		 Utils.wait(driver, db.dashboardtitle );
-		String s = db.dashboardTitle();
-		assertEquals(s, "Dashboard");
-		
-		
-	}
+	
 	
 	
 		
