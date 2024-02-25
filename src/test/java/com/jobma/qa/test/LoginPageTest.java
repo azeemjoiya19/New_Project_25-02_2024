@@ -3,7 +3,9 @@ package com.jobma.qa.test;
 import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -15,7 +17,7 @@ public class LoginPageTest extends TestBase {
 	
 	
 	
-	@BeforeTest()
+	@BeforeMethod()
 	public void setup() throws InterruptedException
 	{
 		TestBase.initialize();
@@ -52,7 +54,7 @@ public class LoginPageTest extends TestBase {
 		
 	}
 	
-	@AfterTest()
+	@AfterMethod()
 	public void close()
 	{
 		TestBase.exit();

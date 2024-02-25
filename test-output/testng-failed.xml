@@ -6,8 +6,8 @@
       <class name="com.jobma.qa.test.LoginPageTest">
         <methods>
           <include name="setup"/>
-          <include name="loginPageTest"/>
           <include name="close"/>
+          <include name="loginPageTest1"/>
         </methods>
       </class> <!-- com.jobma.qa.test.LoginPageTest -->
     </classes>
