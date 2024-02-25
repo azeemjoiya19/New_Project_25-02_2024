@@ -38,6 +38,20 @@ public class LoginPageTest extends TestBase {
 		
 	}
 	
+	@Test()
+	public void loginPageTest1() throws InterruptedException
+	{
+		 lp.login();
+		
+		 
+		 Thread.sleep(5000);
+		Dashboard db = new Dashboard();
+		String s = db.dashboardTitle();
+		assertEquals(s, "Dashboard");
+		
+		
+	}
+	
 	@AfterTest()
 	public void close()
 	{
