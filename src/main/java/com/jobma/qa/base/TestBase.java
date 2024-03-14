@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import com.jobma.qa.pages.Dashboard;
 import com.jobma.qa.pages.LoginPage;
+import com.jobma.qa.util.Utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -24,11 +25,11 @@ public  class TestBase {
 	public TestBase()
 	{
 		try {
-			System.out.println("test1");
+	           System.out.println("properties try block");
 			 prop = new Properties();
 			FileInputStream fs = new FileInputStream("D:\\Java_Selenium_Project\\src\\main\\java\\com\\jobma\\qa\\config\\config.properties");
 			prop.load(fs);
-			System.out.println("test2");
+		
 			
 			
 			
@@ -52,7 +53,10 @@ public  class TestBase {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
 		driver.get(prop.getProperty("url"));
-		Thread.sleep(3000);
+		Thread.sleep(1000);
+		
+		
+		// Utils.wait(driver, lp.usernamefield);
 		
 		
 	}

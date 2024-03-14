@@ -14,8 +14,8 @@ public class Utils extends TestBase {
 	public static void wait(WebDriver driver1 , WebElement ele)
 	{
 
-
-		WebDriverWait w = new WebDriverWait(driver1,Duration.ofSeconds(30));
+  System.out.println("wait statement");
+		WebDriverWait w = new WebDriverWait(driver1,Duration.ofSeconds(20));
 		w.until(ExpectedConditions.visibilityOf(ele));
 		//ele.click();
 	}

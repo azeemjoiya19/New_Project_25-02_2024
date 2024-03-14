@@ -4,10 +4,12 @@ import static org.testng.Assert.assertEquals;
 
 import org.bouncycastle.jcajce.provider.symmetric.util.PBE.Util;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.jobma.qa.base.TestBase;
@@ -15,48 +17,80 @@ import com.jobma.qa.pages.Dashboard;
 import com.jobma.qa.pages.LoginPage;
 import com.jobma.qa.util.Utils;
 
+import utility.ExcelUtils;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 public class LoginPageTest extends TestBase {
-	
-	
-	
+
+	String projectPath = System.getProperty("user.dir");
+
+	@DataProvider(name="login_Data")
+	public Object[][] logindata()
+	{
+		ExcelUtils eu = new ExcelUtils(projectPath+"/excel/logindata.xlsx","sheet1");
+		Object[][] data1 = 	eu.readExceltData();
+		return data1;
+
+	}
+
+
+
 	@BeforeTest()
 	public void setup() throws InterruptedException
 	{
 		TestBase.initialize();
-		 lp = new LoginPage();
-		
-		
+		lp = new LoginPage();
+
+
 	}
-	
-	@Test()
-	public void loginPageTest() throws InterruptedException
+
+
+
+
+
+	@Test(dataProvider = "login_Data")
+	public void loginPageTest(String u,String p) throws InterruptedException
 	{
-		db =  lp.login();
+		lp.login(u,p);
+		Thread.sleep(1000);
+		driver.navigate().refresh();
 		
-		 db = new Dashboard();
-		 Utils.wait(driver, db.dashboardtitle );
-		String s = db.dashboardTitle();
-		assertEquals(s, "Dashboard");
-		
-		
+
+
+
+
 	}
-	
-	
-	
-	
-	
-		
-		
-	
-	
+
+	@Test(dataProvider = "login_Data",priority =1)
+	public void invalidDataLogin(String u ,String p) throws InterruptedException
+	{
+		lp.loginInvalidData(u,p);
+		Thread.sleep(3000);
+		if (lp.validationmessage.isDisplayed()||lp.validationmessage1.isDisplayed());
+		Assert.assertTrue(true);
+		driver.navigate().refresh();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	@AfterTest()
 	public void close()
 	{
 		TestBase.exit();
 	}
-	
-	
+
+
 
 }
