@@ -55,7 +55,7 @@ public class LoginPageTest extends TestBase {
 		lp.login(u,p);
 		Thread.sleep(1000);
 		driver.navigate().refresh();
-		
+
 
 
 
@@ -67,8 +67,14 @@ public class LoginPageTest extends TestBase {
 	{
 		lp.loginInvalidData(u,p);
 		Thread.sleep(3000);
-		if (lp.validationmessage.isDisplayed()||lp.validationmessage1.isDisplayed());
-		Assert.assertTrue(true);
+		if (lp.validationmessage.isDisplayed()||lp.validationmessage1.isDisplayed())
+		{
+			Assert.assertTrue(true);
+		}
+		else
+		{
+			Assert.assertFalse(false);	
+		}
 		driver.navigate().refresh();
 	}
 

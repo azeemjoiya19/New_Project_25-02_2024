@@ -5,9 +5,10 @@
     <classes>
       <class name="com.jobma.qa.test.LoginPageTest">
         <methods>
+          <include name="loginPageTest" invocation-numbers="0 1"/>
           <include name="setup"/>
-          <include name="loginPageTest" invocation-numbers="1"/>
           <include name="close"/>
+          <include name="invalidDataLogin" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- com.jobma.qa.test.LoginPageTest -->
     </classes>

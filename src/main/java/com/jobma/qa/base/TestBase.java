@@ -27,7 +27,7 @@ public  class TestBase {
 		try {
 	           System.out.println("properties try block");
 			 prop = new Properties();
-			FileInputStream fs = new FileInputStream("D:\\Java_Selenium_Project\\src\\main\\java\\com\\jobma\\qa\\config\\config.properties");
+			FileInputStream fs = new FileInputStream("/Users/apple/Documents/jobma_Self/New_Project_25-02_2024/src/main/java/com/jobma/qa/config/config.properties");
 			prop.load(fs);
 		
 			
